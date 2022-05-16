@@ -1,0 +1,47 @@
+<div class="container" style="margin-bottom: 15%">
+    <div class="col-12 application-success-text"><span style="font-weight: 600">Thank you, </span> your application has been received.</div>
+    <div class="col-12 m-subscription-details_divider" style="margin-left: 11%"></div>
+    <div class="col-12 application-success-text">
+        <span style="font-weight: 600">What happens next:</span>
+    </div>
+    <div class="row col-lg-6 col-md-8 col-sm-6 application-success-text" style="margin-top: 30px">
+        <div class="col-lg-5 col-md-5 col-sm-5">
+            <div class="img-wrapper-details"><img src="/business/ebu-prepaid/assets/images/Details.svg" /></div>
+            <div class="details-review-heading">Details</div>
+            <div class="details-review">We'll confirm that all the details you provided are correct</div>
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-1" style="margin-right: 5px; margin-left: 15px">
+            <div class="vr-line-sm"></div>
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-5">
+            <div class="img-wrapper-review"><img src="/business/ebu-prepaid/assets/images/Review.svg" /></div>
+            <div class="details-review-heading">Review</div>
+            <div class="details-review">We’ll let you know if your application has been approved.</div>
+        </div>
+    </div>
+
+    <div class="col-12 m-subscription-details_divider" style="margin-left: 11%"></div>
+    <div class="col-12 application-success-text">
+        <div [formGroup]="feedbackForm">
+            <span>Rate your experience.</span>
+            <div class="keep-an-eye" style="margin-top: 10px">We'd appreciate your feedback</div>
+            <div class="feedback">
+                <mtn-feedback formControlName="feedbackRating"></mtn-feedback>
+            </div>
+            <mtn-input-textarea
+                [isEmpty]="true"
+                [successPage]="true"
+                formControlName="feedbackComment"
+                [placeholderText]="'Leave a comment'"
+                [maxLength]="250"
+                class="input-mobile-style"
+                ngDefaultControl
+            >
+            </mtn-input-textarea>
+            <div class="optional-text">OPTIONAL</div>
+            <button #order_success style="margin-top: 4%; width: 150px; height: 45px" mtnButton type="secondary2" (click)="done()">
+                Done
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+export const defaultRoute = '';
+export const signupRoute = 'signup';
+export const paymentRoute = 'payment/callback/thanks';
+export const availableUpgradesRoute = 'available-upgrades';
+export const loginRoute = 'login';
+export const loginOtpRoute = 'otp';
+export const chooseWorkTitle = 'work-title';
+export const applicationSuccess = 'application-success';
+export const dashboardDefaultRoute = 'dashboard';
+export const dashboardBusinessDirectRoute = 'application/:step';
+export const dashboardApplicationDirectRoute = 'dashboard/application';
+export const agentRoute = 'agent';

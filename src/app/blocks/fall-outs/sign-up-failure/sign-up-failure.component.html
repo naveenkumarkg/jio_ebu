@@ -1,0 +1,23 @@
+<mtn-modal alignModal="center" id="signUp-failed" tabindex="0">
+    <header>
+        <span class="mtn-fall-out-close">
+            <img src="/business/ebu-prepaid/assets/images/Close_icon.svg" (click)="closeModal()" />
+        </span>
+        <span class="mtn-fall-out-icon d-block my-4">
+            <img src="/business/ebu-prepaid/assets/images/Warning_icon.svg" width="60px" />
+        </span>
+    </header>
+    <main>
+        <h3 class="header_title mtn-fall-out-header">Sign Up Paused<span style="font-weight: 600"></span></h3>
+        <div class="mtn-fall-out-text">
+            You used an invalid cellphone number 3 times in your<br />
+            application. Please use a different prepaid cellphone <br />
+            number or visit any MTN Store for help.
+        </div>
+        <div class="mtn-fall-out-btn">
+            <br />
+            <button mtnButton tabindex="0" type="secondary2" (click)="closeModal()">Use a different number</button>
+            <br />
+        </div>
+    </main>
+</mtn-modal>

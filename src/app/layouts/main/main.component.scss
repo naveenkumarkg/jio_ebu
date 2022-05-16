@@ -1,0 +1,36 @@
+.mainsection {
+    background: url(/ebu-prepaid/assets/images/Image-background.png) no-repeat;
+    background-position: center center;
+    background-size: cover;
+    width: 100%;
+    height: auto;
+    padding: 20vh 0 40vh;
+}
+
+@media screen and (max-width: 768px) {
+    ::ng-deep {
+        #api-failed,
+        #signUp-failed {
+            .mtn-modal-body {
+                padding: 50px 30px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 415px) {
+    ::ng-deep {
+        #api-failed,
+        #signUp-failed {
+            .mtn-modal-body {
+                height: 70vh;
+                padding: 90px 20px;
+                text-align: center;
+            }
+
+            .mtn-fall-out-close {
+                top: -100px;
+            }
+        }
+    }
+}

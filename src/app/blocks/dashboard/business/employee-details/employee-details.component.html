@@ -1,0 +1,161 @@
+<div class="container m-0 p-0" [formGroup]="employeeDetailsForm">
+    <div class="row">
+        <p class="business-stepper_header">
+            <span class="font-weight-semi-bold">Your business details</span>
+        </p>
+    </div>
+    <div class="row u-sp-bottom-45">
+        <div class="col-sm-12 p-0">
+            <div class="col-sm-12">
+                <mtn-input
+                    [customMarkAsDirty]="employeeDetailsForm.get('businessName')?.touched && !employeeDetailsForm.get('businessName').valid"
+                >
+                    <span mtnInputLabel *ngIf="employeeDetailsForm.controls['businessName']?.value?.length > 0">Business name</span>
+                    <input
+                        mtnInput
+                        maxlength="26"
+                        minlength="2"
+                        (blur)="OnInputChange('businessName')"
+                        formControlName="businessName"
+                        placeholder="Business name"
+                        required
+                    />
+                    <p
+                        mtnInputMessage
+                        *ngIf="
+                            employeeDetailsForm.get('businessName')?.errors?.required && employeeDetailsForm.get('businessName')?.touched
+                        "
+                    >
+                        Business Name is required.
+                    </p>
+                    <p
+                        class="mtn-input_msg error"
+                        mtnInputMessage
+                        *ngIf="
+                            (employeeDetailsForm.get('businessName')?.errors?.pattern ||
+                                employeeDetailsForm.get('businessName')?.errors?.minlength) &&
+                            employeeDetailsForm.get('businessName')?.touched
+                        "
+                    >
+                        Invalid Business name.
+                    </p>
+                </mtn-input>
+            </div>
+            <div class="col-12 col-sm-12">
+                <mtn-input
+                    [customMarkAsDirty]="
+                        employeeDetailsForm.get('referenceNumber')?.touched && !employeeDetailsForm.get('referenceNumber').valid
+                    "
+                    class="u-sp-top"
+                >
+                    <span mtnInputLabel *ngIf="employeeDetailsForm.controls['referenceNumber']?.value?.length > 0"
+                        >MTN business account reference number</span
+                    >
+                    <input
+                        mtnInput
+                        maxlength="11"
+                        minlength="9"
+                        (blur)="OnInputChange('referenceNumber')"
+                        formControlName="referenceNumber"
+                        placeholder="MTN business account reference number"
+                        required
+                    />
+                    <p
+                        class="mtn-input_msg error"
+                        mtnInputMessage
+                        *ngIf="
+                            employeeDetailsForm.get('referenceNumber')?.errors?.required &&
+                            employeeDetailsForm.get('referenceNumber')?.touched
+                        "
+                    >
+                        Account reference number is required.
+                    </p>
+                    <p
+                        class="mtn-input_msg error"
+                        mtnInputMessage
+                        *ngIf="
+                            (employeeDetailsForm.get('referenceNumber')?.errors?.pattern ||
+                                employeeDetailsForm.get('referenceNumber')?.errors?.minlength) &&
+                            employeeDetailsForm.get('referenceNumber')?.touched
+                        "
+                    >
+                        Invalid account reference number.
+                    </p>
+                    <p mtnInputMessage *ngIf="!employeeDetailsForm.get('referenceNumber')?.touched">
+                        Link your prepaid cellphone number to a business account.
+                    </p>
+                </mtn-input>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <p class="business-stepper_header">
+            <span class="font-weight-semi-bold">Business documentation</span>
+        </p>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 u-sp-bottom-45 p-0">
+            <div class="col-sm-8">
+                <mtn-input-upload
+                    class="mtn-upload-business-file mb-4"
+                    ngDefaultControl
+                    formControlName="fileOwnerId"
+                    (change)="fileChangeEvent('fileOwnerId')"
+                >
+                    <span mtnInputUploadLabel class="upload-file-label"> Your {{ selectedIdType !== 'RSAID' ? 'Passport' : 'ID' }}</span>
+                    <span mtnInputUploadPlaceHolder>Browse files</span>
+                    <span class="mtn-input_msg" *ngIf="formStatus['fileOwnerId'] == ''" mtnInputUploadErrorMessage>
+                        UPLOAD A JPEG, JPG, PNG OR PDF FILE (5MB LIMIT)
+                    </span>
+                    <span *ngIf="formStatus['fileOwnerId']" class="mtn-input_msg error" mtnInputUploadErrorMessage>
+                        {{ formStatus['fileOwnerId'] }}
+                    </span>
+                </mtn-input-upload>
+                <div class="hr-line-sm my-5"></div>
+                <div>
+                    <p class="business-stepper_para">Upload your affiliation documents:</p>
+                    <span class="mb-3 d-block document-subtext" style="color: #8a9198">
+                        EG. Payslip, bank statement, taxi permit, proof of trade, affiliation letter or letter of recommendation on a
+                        company letterhead.
+                    </span>
+                    <mtn-input-upload
+                        class="mtn-upload-business-file"
+                        ngDefaultControl
+                        formControlName="fileAffiliationDoc"
+                        (change)="fileChangeEvent('fileAffiliationDoc')"
+                    >
+                        <span mtnInputUploadLabel class="upload-file-label">Documents</span>
+                        <span mtnInputUploadPlaceHolder>Browse files</span>
+                        <span class="mtn-input_msg" *ngIf="formStatus['fileAffiliationDoc'] == ''" mtnInputUploadErrorMessage>
+                            UPLOAD A JPEG, JPG, PNG OR PDF FILE (5MB LIMIT)
+                        </span>
+                        <span class="mtn-input_msg error" *ngIf="formStatus['fileAffiliationDoc']" mtnInputUploadErrorMessage>
+                            {{ formStatus['fileAffiliationDoc'] }}
+                        </span>
+                    </mtn-input-upload>
+                </div>
+                <div class="mtn-checkBox mt-5 square-checkbox">
+                    <label tabindex="0" class="mtn-checkbox-button" style="display: inline">
+                        <input
+                            mtnCheckboxSquareTick
+                            formControlName="termsAndConditions"
+                            tabindex="0"
+                            type="checkbox"
+                            class="mtn-checkbox-button__input"
+                        />
+                        <span class="mtn-checkbox-button__control"></span>
+                    </label>
+                    <span>
+                        I agree to the Terms and Conditions of the
+                        <span (click)="viewTerms()" class="mtn-business-stepper_link"> Subscriber Agreement</span>.
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<mtn-icon mtnStepperPrevious name="back" tabindex="0" class="business-stepper_prev-step" (click)="onPrevStep()"> </mtn-icon>
+<button mtnButton tabindex="0" [disabled]="!validateForm()" #recepient_details mtnStepperNext type="secondary2" (click)="onNextStep()">
+    Next
+</button>

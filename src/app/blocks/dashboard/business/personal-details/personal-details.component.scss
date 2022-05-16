@@ -1,0 +1,54 @@
+.header-text {
+    font-size: 2.3em;
+    color: #232323;
+    font-family: 'Work Sans';
+    letter-spacing: -0.2px;
+    font-weight: 600;
+}
+
+.u-bold {
+    font-weight: bold;
+}
+.u-sp-top {
+    margin-top: 1.3em;
+}
+
+.u-font-sm {
+    font-size: 1.5em;
+    font-family: 'Work Sans';
+}
+
+.mtn-btn-cont {
+    align-items: center;
+}
+
+::ng-deep .mtn-radio-button_wrapper {
+    margin-bottom: 0;
+    display: inline-flex !important;
+    align-items: center;
+}
+.radio-btn ::ng-deep .mtn-radio-button_control {
+    margin-top: -8px;
+}
+
+.u-sp-v {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.u-no-gutters {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.input-invalid {
+    color: #af0000 !important;
+}
+
+@media screen and (max-width: 767px) {
+    .u-font-sm {
+        margin-top: 30px !important;
+    }
+    .u-padding-lf-sm {
+        padding-left: 15px;
+    }
+}

@@ -1,0 +1,127 @@
+<div class="container m-0 p-0" [formGroup]="businessdetailsForm">
+    <div class="row">
+        <p class="business-stepper_header"><span class="font-weight-semi-bold">Your business details</span></p>
+    </div>
+    <div class="row">
+        <div class="col-12 u-sp-bottom-45 p-0">
+            <div class="col-12">
+                <mtn-input
+                    [customMarkAsDirty]="businessdetailsForm.get('businessName')?.touched && !businessdetailsForm.get('businessName').valid"
+                >
+                    <span mtnInputLabel *ngIf="businessdetailsForm.controls['businessName'].value">Business name</span>
+                    <input
+                        mtnInput
+                        maxlength="26"
+                        (blur)="OnInputChange('businessName')"
+                        minlength="2"
+                        formControlName="businessName"
+                        placeholder="Business name"
+                        required
+                    />
+                    <p class="mtn-input_msg error" mtnInputMessage *ngIf="formStatus['businessName']">
+                        {{ formStatus['businessName'] }}
+                    </p>
+                    <p
+                        class="mtn-input_msg error"
+                        mtnInputMessage
+                        *ngIf="
+                            businessdetailsForm.get('businessName')?.errors?.required && businessdetailsForm.get('businessName')?.touched
+                        "
+                    >
+                        Business Name is required.
+                    </p>
+                    <p class="mtn-input_msg error" mtnInputMessage *ngIf="formStatus['businessName']"></p>
+                </mtn-input>
+            </div>
+            <div class="col-12">
+                <mtn-input-number
+                    class="d-block u-sp-top"
+                    length="12"
+                    [isAlphanumeric]="true"
+                    [form]="businessdetailsForm.get('registrationId')"
+                    [valid]="validRegistrationId"
+                >
+                    <mtn-input-number-label>Business registration number</mtn-input-number-label>
+                </mtn-input-number>
+                <mtn-input-number-message class="mtnoptional"> OPTIONAL </mtn-input-number-message>
+            </div>
+        </div>
+        <div>
+            <p class="business-stepper_header"><span class="font-weight-semi-bold">Business documentation</span></p>
+            <mtn-input-upload
+                class="mtn-upload-business-file mb-4"
+                ngDefaultControl
+                formControlName="fileOwnerDocumentId"
+                (change)="fileChangeEvent('fileOwnerDocumentId')"
+            >
+                <span mtnInputUploadLabel class="upload-file-label">{{ selectedIdType !== 'RSAID' ? 'Your Passport' : 'Your ID' }}</span>
+                <span mtnInputUploadPlaceHolder>Browse files</span>
+                <span class="mtn-file-upload_err_msg" *ngIf="formStatus['fileOwnerDocumentId'] == ''" mtnInputUploadErrorMessage>
+                    Upload A JPEG, JPG, PNG OR PDF FILE (5MB LIMIT)
+                </span>
+                <span class="mtn-input_msg error" *ngIf="formStatus['fileOwnerDocumentId']" mtnInputUploadErrorMessage>
+                    {{ formStatus['fileOwnerDocumentId'] }}
+                </span>
+            </mtn-input-upload>
+        </div>
+        <hr class="break-line" />
+        <div style="margin-top: 30px">
+            <p class="business-stepper_para">Upload your proof of business ownership:</p>
+            <span class="mb-3 d-block" style="color: #8a9198"
+                >EG. Business registration document, business bank account confirmation letter, <br />or business invoice</span
+            >
+            <mtn-input-upload
+                class="mtn-upload-business-file"
+                ngDefaultControl
+                formControlName="fileRegistrationDocumentId"
+                (change)="fileChangeEvent('fileRegistrationDocumentId')"
+            >
+                <span mtnInputUploadLabel class="upload-file-label">Documents</span>
+                <span mtnInputUploadPlaceHolder>Browse files</span>
+                <span class="mtn-file-upload_err_msg" *ngIf="formStatus['fileRegistrationDocumentId'] == ''" mtnInputUploadErrorMessage>
+                    Upload A JPEG, JPG, PNG OR PDF FILE (5MB LIMIT)
+                </span>
+                <span class="mtn-input_msg error" *ngIf="formStatus['fileRegistrationDocumentId']" mtnInputUploadErrorMessage>
+                    {{ formStatus['fileRegistrationDocumentId'] }}
+                </span>
+            </mtn-input-upload>
+        </div>
+        <div class="mtn-checkBox mt-5 square-checkbox">
+            <label tabindex="0" class="mtn-checkbox-button" style="display: inline">
+                <input
+                    mtnCheckboxSquareTick
+                    formControlName="termsAndConditions"
+                    tabindex="0"
+                    type="checkbox"
+                    class="mtn-checkbox-button__input"
+                    [(ngModel)]="isTermsandConditionsChecked"
+                    (change)="checkvalue(isTermsandConditionsChecked)"
+                />
+                <span class="mtn-checkbox-button__control"></span>
+            </label>
+            <span style="width: calc(100% - 50px)">
+                I agree to the Terms and Conditions of the
+                <span (click)="viewTerms()" class="mtn-business-stepper_link"> Subscriber Agreement</span>.
+            </span>
+        </div>
+    </div>
+</div>
+<mtn-icon mtnStepperPrevious name="back" tabindex="0" class="business-stepper_prev-step" (click)="onPrevStep()"> </mtn-icon>
+<button
+    mtnButton
+    tabindex="0"
+    style="margin-top: 50px"
+    [disabled]="
+        !this.businessdetailsForm.get('fileOwnerDocumentId').valid ||
+        !this.businessdetailsForm.get('fileRegistrationDocumentId').valid ||
+        !this.ownerIdDoc?.documentId ||
+        !this.registrationIdDoc?.documentId ||
+        !this.businessdetailsForm.get('businessName').valid ||
+        !isTermsandConditionsChecked
+    "
+    mtnStepperNext
+    type="secondary2"
+    (click)="onNextStep()"
+>
+    Next
+</button>

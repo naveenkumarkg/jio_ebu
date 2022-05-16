@@ -1,0 +1,27 @@
+<mtn-nav *ngIf="navItems.length">
+    <a [routerLink]="['/login']" mtn-nav-brand>
+        <img alt="mtn logo" mtn-nav-logo src="/business/ebu-prepaid/assets/images/mtn_logo.svg" />
+    </a>
+    <mtn-nav-item *ngFor="let navItem of navItems; let x = index">
+        <a [href]="navItem?.below?.length > 0 ? 'javascript:void(0)' : navItem?.uri" mtn-nav-item-link>{{ navItem?.title }}</a>
+        <mtn-nav-submenu *ngIf="navItem?.below">
+            <mtn-nav-submenu-item *ngFor="let subItem of navItem?.below; let s = index" [submenuItemIndex]="1">
+                <a href="{{ subItem?.uri }}" mtn-nav-submenu-link>{{ subItem?.title }}</a>
+            </mtn-nav-submenu-item>
+            <mtn-submenu-close>close</mtn-submenu-close>
+        </mtn-nav-submenu>
+    </mtn-nav-item>
+    <mtn-nav-profile>
+        <p>Profile</p>
+    </mtn-nav-profile>
+    <a mtn-nav-service-link name="business" href="javascript:void(0)">Business</a>
+    <a mtn-nav-service-link name="personal" href="javascript:void(0)">Personal</a>
+    <a mtn-nav-service-link name="pulse" href="javascript:void(0)">Pulse</a>
+    <a mtn-nav-service-link name="play" href="javascript:void(0)">Play</a>
+    <mtn-nav-service-item>Personal</mtn-nav-service-item>
+    <mtn-nav-service-list>
+        <a href="javascript:void(0)" mtn-nav-service-link name="pulse">Pulse</a>
+        <a href="javascript:void(0)" mtn-nav-service-link name="play">Play</a>
+        <a href="javascript:void(0)" mtn-nav-service-link name="business">Business</a>
+    </mtn-nav-service-list>
+</mtn-nav>

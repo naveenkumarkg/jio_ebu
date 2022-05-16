@@ -1,0 +1,100 @@
+<div class="container ebu-container" [formGroup]="agentForm">
+    <div class="row center" (keydown.enter)="onKeyDownEvent($event)">
+        <div class="col-lg-6 col-md-10 col-sm-12">
+            <mtn-card-input>
+                <mtn-card-input-top style="margin-bottom: 10px">
+                    <h3 mtnCardInputTitle>
+                        <span class="header-align"
+                            >How are you applying <br />
+                            for <strong>Made for Skhokho?</strong></span
+                        >
+                    </h3>
+                </mtn-card-input-top>
+
+                <mtn-card-input-body style="margin-bottom: 40px">
+                    <div mtnCardMainBody>
+                        <mtn-radio-button-group class="d-block" ngDefaultControl formControlName="channelName">
+                            <mtn-radio-button
+                                ngDefaultControl
+                                class="agent-options"
+                                [isEnlarged]="true"
+                                [value]="'Self-Service'"
+                                [checked]="selectedChannel === 'Self-Service'"
+                                (click)="changeOption('Self-Service')"
+                            >
+                                <label class="radio_label mt-2" [class.font-weight-semi-bold]="selectedChannel === 'Self-Service'">
+                                    I'm doing it myself
+                                </label>
+                            </mtn-radio-button>
+
+                            <mtn-radio-button
+                                class="agent-options"
+                                ngDefaultControl
+                                [isEnlarged]="true"
+                                [value]="'BRC Agent'"
+                                (click)="changeOption('BRC Agent')"
+                                [checked]="selectedChannel === 'BRC Agent'"
+                            >
+                                <label class="radio_label mt-2" [class.font-weight-semi-bold]="selectedChannel === 'BRC Agent'">
+                                    Store agent
+                                </label>
+                                <div class="w-100">
+                                    <mtn-input-number
+                                        length="6"
+                                        *ngIf="selectedChannel === 'BRC Agent'"
+                                        [isAlphanumeric]="false"
+                                        [form]="agentNumber"
+                                        [valid]="agentNumber.valid"
+                                        [isFieldSelected]="focusAgentInputNumber"
+                                        type="number"
+                                    >
+                                        <mtn-input-number-label>Oracle number</mtn-input-number-label>
+                                        <mtn-input-number-message> Use the agent's Oracle number to continue. </mtn-input-number-message>
+                                        <!-- <mtn-input-number-message class="mtn-input_msg error" *ngIf="formStatus['accountNumber']">
+                                            {{ formStatus['accountNumber'] }}
+                                        </mtn-input-number-message> -->
+                                    </mtn-input-number>
+                                </div>
+                            </mtn-radio-button>
+                            <mtn-radio-button
+                                class="agent-options"
+                                ngDefaultControl
+                                [isEnlarged]="true"
+                                [value]="'Informal Agent'"
+                                (click)="changeOption('Informal Agent')"
+                                [checked]="selectedChannel === 'Informal Agent'"
+                            >
+                                <label class="radio_label mt-2" [class.font-weight-semi-bold]="selectedChannel === 'Informal Agent'">
+                                    Informal agent
+                                </label>
+                                <div class="w-100">
+                                    <mtn-input-number
+                                        length="9"
+                                        minlength="4"
+                                        *ngIf="selectedChannel === 'Informal Agent'"
+                                        [isAlphanumeric]="true"
+                                        [form]="agentNumber"
+                                        [valid]="agentNumberInputValid"
+                                        [isFieldSelected]="focusAgentInputNumber"
+                                        type="number"
+                                        (inputChange)="inputChange($event)"
+                                    >
+                                        <mtn-input-number-label>Agent number</mtn-input-number-label>
+                                        <mtn-input-number-message> 4-9 characters. </mtn-input-number-message>
+                                        <!-- <mtn-input-number-message class="mtn-input_msg error" *ngIf="formStatus['accountNumber']">
+                                            {{ formStatus['accountNumber'] }}
+                                        </mtn-input-number-message> -->
+                                    </mtn-input-number>
+                                </div>
+                            </mtn-radio-button>
+                        </mtn-radio-button-group>
+                    </div>
+                </mtn-card-input-body>
+
+                <mtn-card-input-bottom>
+                    <button mtnButton [disabled]="!validateForm()" (click)="onNext()" type="secondary2">Continue</button>
+                </mtn-card-input-bottom>
+            </mtn-card-input>
+        </div>
+    </div>
+</div>

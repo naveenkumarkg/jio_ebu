@@ -1,0 +1,140 @@
+::ng-deep .TermsConditions-section {
+    width: 100%;
+    margin: 0;
+    padding-top: 20px;
+    padding-bottom: 15px;
+}
+
+embed {
+    width: 100%;
+    height: 400px;
+}
+
+.terms-button {
+    border: none;
+    background: transparent;
+    color: #5f5f5f;
+    width: 100%;
+    text-align: left;
+    margin-top: 32px;
+    text-decoration: underline;
+}
+
+::ng-deep .TermsConditions-container {
+    width: 100%;
+    padding: 0;
+}
+
+::ng-deep .mtn-modal-body {
+    background: white;
+}
+
+::ng-deep .TermsConditions-article {
+    min-height: 440px;
+    height: unset;
+    padding: 0;
+}
+
+.u-bold-txt {
+    font-weight: 900;
+}
+
+::ng-deep .TermsConditions-sidebarItem {
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+::ng-deep .TermsConditions-buttons {
+    align-items: center;
+    justify-content: flex-start;
+    display: inline-flex;
+    margin-left: 250px;
+}
+
+.TermsConditions-buttons-right {
+    margin-left: 200px;
+}
+
+.terms-conditions-header {
+    color: #232323;
+    font-family: 'Work Sans';
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: -0.16px;
+}
+
+.pdf-text {
+    color: #232323;
+    font-family: 'Work Sans';
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: -0.2px;
+    line-height: 28px;
+    margin-bottom: 20px;
+}
+
+::ng-deep .mtn-multi__item--lineSim {
+    text-align: right;
+    padding-right: 10%;
+}
+
+.mtn-checkbox-padding {
+    padding-top: 10px;
+}
+
+.i-agree-to-be-credit {
+    width: 159px;
+    color: #000000;
+    font-family: 'MTN Brighter Sans';
+    font-size: 12px;
+    letter-spacing: -0.06px;
+    line-height: 16px;
+}
+
+embed {
+    -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+}
+
+.mtn-t-and-c-loading {
+    background-color: white;
+    margin-left: 100px;
+    width: 40px;
+    height: 40px;
+}
+
+::ng-deep .mtn-modal-body {
+    width: 65%;
+}
+.is-mobile {
+    display: none;
+}
+@media screen and (max-width: 768px) {
+    ::ng-deep .TermsConditions-sidebar {
+        display: none;
+    }
+    ::ng-deep .mtn-modal-body {
+        padding: 30px 10px;
+        width: 100%;
+    }
+    ::ng-deep .TermsConditions-buttons {
+        margin-left: 20px;
+        display: flex !important;
+    }
+}
+@media screen and (min-width: 769px) {
+    .is-mobile {
+        display: block;
+    }
+    .pdf-fall-out {
+        display: none;
+    }
+}
+
+.pdf-fall-out-text {
+    color: #232323;
+    font-family: 'Work Sans';
+    font-size: 24px;
+    letter-spacing: -0.2px;
+    width: 100%;
+    text-align: center;
+}

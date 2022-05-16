@@ -1,0 +1,23 @@
+<mtn-modal width="550px" alignModal="center" id="api-failed" tabindex="0">
+    <header>
+        <span class="mtn-fall-out-close">
+            <img src="/business/ebu-prepaid/assets/images/Close_icon.svg" (click)="closeModal()" />
+        </span>
+        <span class="mtn-fall-out-icon d-block my-4">
+            <img src="/business/ebu-prepaid/assets/images/Warning_icon.svg" width="60px" />
+        </span>
+    </header>
+    <main>
+        <h3 class="header_title mtn-fall-out-header">Something went wrong.<span style="font-weight: 600"></span></h3>
+        <div class="mtn-fall-out-text">
+            <!-- Please call us on <span style="font-weight: 600"> 083 123 1800 </span> or <span style="font-weight: 600">135 </span> to
+            continue.<br /><br /> -->
+            There was an error processing your application.<br /><br />
+        </div>
+        <div class="mtn-fall-out-btn">
+            <br />
+            <button mtnButton tabindex="0" type="secondary2" (click)="closeModal()">Close</button>
+            <br />
+        </div>
+    </main>
+</mtn-modal>

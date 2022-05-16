@@ -1,0 +1,7 @@
+{
+  "hooks": {
+     "pre-commit": "lint-staged && git-precommit-checks && npm run prettier:check",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-push": "npm run lint"
+  }
+}

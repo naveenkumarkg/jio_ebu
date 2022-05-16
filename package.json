@@ -1,0 +1,144 @@
+{
+    "name": "ebu-prepaid",
+    "version": "1.0.0",
+    "scripts": {
+        "ng": "ng",
+        "start": "ng serve",
+        "build": "ng build",
+        "build:prod": "ng build --configuration=production --aot",
+        "test": "ng test --no-watch --no-progress --code-coverage --browsers=ChromeHeadlessNoSandbox",
+        "lint": "ng lint",
+        "lint:fix": "ng lint --fix && npm run prettier:fix",
+        "prettier:check": "prettier --config ./.prettierrc --list-different \"src/{app,environments,assets}/**/*{.ts,.js,.html,.json,.css,.scss}\"",
+        "prettier:fix": "prettier --config ./.prettierrc --write \"src/{app,environments,assets}/**/*{.ts,.js,.json,.html,.css,.scss}\"",
+        "e2e": "ng e2e",
+        "dev:ssr": "ng run ebu-prepaid:serve-ssr",
+        "serve:ssr": "node dist/server/main.js",
+        "build:ssr": "ng build --prod && ng run ebu-prepaid:server:production",
+        "prerender": "ng run ebu-prepaid:prerender",
+        "changelog": "auto-changelog --template changelog-tmp.hbs",
+        "compile:server:local": "webpack --config webpack.server-local.config.js --colors",
+        "compile:server:prod": "webpack --config webpack.server-prod.config.js --colors"
+    },
+    "private": true,
+    "lint-staged": {
+        "{,src/**/}*.{md,json,ts,css,scss}": [
+            "prettier --write",
+            "git add"
+        ]
+    },
+    "git-precommit-checks": {
+        "rules": [
+            {
+                "filter": "\\.ts$",
+                "nonBlocking": "true",
+                "message": "You’ve got leftover `console.log`",
+                "regex": "console\\.log"
+            },
+            {
+                "message": "You’ve got leftover conflict markers",
+                "regex": "/^[<>|=]{4,}/m"
+            },
+            {
+                "message": "You have unfinished devs",
+                "nonBlocking": "true",
+                "regex": "(?:FIXME|TODO)"
+            }
+        ]
+    },
+    "repository": {
+        "type": "git"
+    },
+    "config": {
+        "commitizen": {
+            "path": "cz-conventional-changelog"
+        }
+    },
+    "engines": {
+        "node": ">=12.13.0"
+    },
+    "cacheDirectories": [
+        "node_modules"
+    ],
+    "commitlint": {
+        "extends": [
+            "@commitlint/config-conventional"
+        ]
+    },
+    "dependencies": {
+        "@angular/animations": "12.0.2",
+        "@angular/cdk": "12.0.2",
+        "@angular/common": "12.0.2",
+        "@angular/compiler": "12.0.2",
+        "@angular/core": "12.0.2",
+        "@angular/forms": "12.0.2",
+        "@angular/platform-browser": "12.0.2",
+        "@angular/platform-browser-dynamic": "12.0.2",
+        "@angular/platform-server": "12.0.2",
+        "@angular/router": "12.0.2",
+        "@egjs/hammerjs": "^2.0.17",
+        "@mtn-components/vivid": "3.247.3",
+        "@ngrx/effects": "12.0.0",
+        "@ngrx/store": "12.0.0",
+        "@ngrx/store-devtools": "12.0.0",
+        "@sentry/browser": "6.5.0",
+        "apexcharts": "^3.26.3",
+        "body-parser": "1.19.0",
+        "bootstrap": "^5.1.1",
+        "compression": "^1.7.4",
+        "core-js": "3.13.1",
+        "date-fns": "^2.28.0",
+        "dayjs": "^1.10.5",
+        "dotenv": "10.0.0",
+        "express": "4.17.1",
+        "express-serve-static-core": "0.1.1",
+        "express-session": "1.15.6",
+        "express-validator": "6.6.1",
+        "gsap": "3.6.0",
+        "hammerjs": "2.0.8",
+        "helmet": "^4.6.0",
+        "jquery": "^3.6.0",
+        "lodash-es": "4.17.21",
+        "ng-apexcharts": "^1.5.10",
+        "ng2-pdf-viewer": "^7.0.2",
+        "ngrx-store-localstorage": "12.0.0",
+        "ngx-webstorage": "8.0.0",
+        "rxjs": "6.6.7",
+        "tesseract.js": "^2.1.5",
+        "tslib": "2.2.0",
+        "zone.js": "0.11.2"
+    },
+    "devDependencies": {
+        "@angular-devkit/build-angular": "0.1100.4",
+        "@angular/cli": "12.0.2",
+        "@angular/compiler-cli": "12.0.2",
+        "@angular/language-service": "12.0.2",
+        "@commitlint/cli": "12.1.4",
+        "@commitlint/config-angular": "12.1.4",
+        "@commitlint/config-conventional": "12.1.4",
+        "@types/jasmine": "3.6.0",
+        "@types/jasminewd2": "2.0.8",
+        "@types/node": "14.14.6",
+        "auto-changelog": "2.2.1",
+        "codelyzer": "6.0.1",
+        "git-cz": "4.7.6",
+        "git-precommit-checks": "3.0.6",
+        "husky": "6.0.0",
+        "jasmine-core": "3.6.0",
+        "jasmine-marbles": "0.8.1",
+        "jasmine-spec-reporter": "5.0.0",
+        "karma": "5.1.0",
+        "karma-chrome-launcher": "3.1.0",
+        "karma-coverage-istanbul-reporter": "3.0.2",
+        "karma-jasmine": "4.0.0",
+        "karma-jasmine-html-reporter": "1.5.0",
+        "lint-staged": "11.0.0",
+        "localstorage-polyfill": "1.0.1",
+        "prettier": "2.3.0",
+        "standard-version": "^9.3.0",
+        "ts-loader": "8.0.7",
+        "ts-node": "8.3.0",
+        "tslint": "6.1.0",
+        "typescript": "4.2.4"
+    }
+}

@@ -1,0 +1,33 @@
+.mainsection {
+    background: url(/business/ebu-prepaid/assets/images/Image-background.png) no-repeat;
+    background-position: center center;
+    background-size: cover;
+    width: 100%;
+    height: auto;
+    padding: 20vh 0 40vh;
+    @media screen and (max-width: 415px) {
+        background-image: none;
+        padding-bottom: 0;
+        padding-top: 8.5rem;
+    }
+    @media screen and (max-width: 768px) {
+        background-image: none;
+        padding-bottom: 0;
+    }
+}
+
+::ng-deep vivid-nav {
+    .menu-item {
+        width: 15% !important;
+    }
+}
+
+::ng-deep .footer-button {
+    font-size: 13px !important;
+}
+
+::ng-deep .nav-container img.brand-icon {
+    box-shadow: none !important;
+    margin-bottom: 10px !important;
+    margin-top: 10px !important;
+}

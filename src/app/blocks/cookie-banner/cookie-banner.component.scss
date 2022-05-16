@@ -1,0 +1,104 @@
+@import '../../styles/utilities/variables.scss';
+
+.container-cookie {
+    width: 100%;
+    background-color: $mtn-color-black;
+    position: absolute;
+    top: 140px;
+    z-index: 9998;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    height: 60px;
+
+    p {
+        margin: 0;
+        color: $mtn-color-white;
+        font-family: $app-font-family;
+        font-size: 1rem;
+        letter-spacing: 0;
+        position: relative;
+        @media screen and (max-width: 767px) {
+            width: 65%;
+        }
+        u {
+            cursor: pointer;
+        }
+        label {
+            margin: 0;
+            color: $mtn-color-gray-100;
+            font-size: 22px;
+            margin-left: 20px;
+            cursor: pointer;
+            position: absolute;
+            right: -8%;
+            bottom: -1rem;
+        }
+    }
+
+    &_icon {
+        position: absolute;
+        right: 25%;
+        // top: 3px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .container-cookie {
+        height: 55px;
+        top: 14%;
+        p {
+            width: 61%;
+            line-height: 15px;
+        }
+        &_icon {
+            position: absolute;
+            right: 12%;
+            top: 15px;
+        }
+    }
+}
+
+@media screen and (max-width: 415px) {
+    .container-cookie {
+        top: 80px;
+        justify-content: start;
+        padding-left: 2rem;
+        justify-content: start;
+
+        p {
+            font-size: 0.6rem;
+            width: 79%;
+            line-height: 12px;
+            label {
+                font-size: 0.8rem;
+                margin-right: 1%;
+            }
+        }
+        &_icon {
+            position: absolute;
+            right: 5%;
+            top: 15px;
+        }
+    }
+}
+
+@media screen and (max-width: 415px) {
+    .container-cookie {
+        top: 80px;
+        justify-content: start;
+        padding-left: 2rem;
+        justify-content: start;
+
+        p {
+            font-size: 0.6rem;
+            width: 95%;
+            span {
+            }
+            label {
+                font-size: 0.8rem;
+                margin-right: 1%;
+            }
+        }
+    }
+}

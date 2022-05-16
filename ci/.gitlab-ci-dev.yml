@@ -1,0 +1,33 @@
+traefik_build:
+  stage: build_dev
+  only:
+    refs:
+      - develop
+  script:
+    - export DEPLOY_ENV=traefik_dev
+    - docker --debug build --build-arg proxy_name=${PROXY_NAME} --build-arg proxy_pass=${PROXY_PASS} --build-arg environment=${DEPLOY_ENV} --rm=true --cache-from ${registry_name} -f Dockerfile -t ${image_name} .
+    - docker tag ${image_name} ${registry_name}/traefik_dev:latest
+    - docker push ${registry_name}/traefik_dev:latest
+    - "if test ! -z \"$(docker images -q ${registry_name}/traefik_dev)\"; then
+                echo \"Images exist....deleting all associated images\";
+                docker rmi $(docker images --format '{{.Repository}}:{{.Tag}}' | grep 'registry.gitlab.com/ebu/ebu-prepaid-skhokho') || true;
+                docker rmi -f $(docker images \"${registry_name}/traefik_dev\") || true;
+            fi"
+    - docker rmi -f $(docker images -f \"dangling=true\" -q) || true
+  tags:
+    - fla_preprod_s03
+
+dev_traefik_deploy:
+  stage: dev_deploy
+  only:
+    refs:
+      - develop
+  script:
+    - docker network create traefik -d overlay --attachable || true
+    - docker stack rm mtn-dev-ebu-prepaid || true
+    - docker stack deploy -c ci/traefik-dev.yml mtn-dev-ebu-prepaid --with-registry-auth
+  environment:
+    name: traefik_dev
+    url: "https://portals-dev.mtn.co.za/ebu-prepaid"
+  tags:
+    - fla_dev_d01

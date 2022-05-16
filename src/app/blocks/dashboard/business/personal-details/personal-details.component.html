@@ -1,0 +1,132 @@
+<div class="row" [formGroup]="detailsForm">
+    <div class="col-12 col-xs-12 u-sp-v">
+        <p class="header-text">Your personal details</p>
+    </div>
+    <div class="col-12 col-xs-12 u-sp-top">
+        <mtn-input [customMarkAsDirty]="detailsForm.get('firstName')?.touched && !detailsForm.get('firstName').valid">
+            <span mtnInputLabel *ngIf="detailsForm.get('firstName').value">First name</span>
+            <input
+                mtnInput
+                (blur)="OnInputChange('firstName')"
+                maxlength="26"
+                formControlName="firstName"
+                placeholder="First name"
+                required
+            />
+            <p mtnInputMessage *ngIf="detailsForm.get('firstName')?.errors?.required && detailsForm.get('firstName')?.touched">
+                FIRST NAME IS REQUIRED.
+            </p>
+            <p
+                mtnInputMessage
+                class="input-invalid"
+                *ngIf="
+                    (detailsForm.get('firstName')?.errors?.pattern || detailsForm.get('firstName')?.errors?.minlength) &&
+                    detailsForm.get('firstName')?.touched
+                "
+            >
+                INVALID FIRST NAME.
+            </p>
+        </mtn-input>
+    </div>
+    <div class="col-12 col-xs-12 u-sp-top">
+        <mtn-input [customMarkAsDirty]="detailsForm.get('surName')?.touched && !detailsForm.get('surName').valid">
+            <span mtnInputLabel *ngIf="detailsForm.get('surName').value">Surname</span>
+            <input mtnInput maxlength="26" (blur)="OnInputChange('surName')" formControlName="surName" placeholder="Surname" required />
+            <p mtnInputMessage *ngIf="detailsForm.get('surName')?.errors?.required && detailsForm.get('surName')?.touched">
+                SURNAME IS REQUIRED.
+            </p>
+            <p
+                mtnInputMessage
+                class="input-invalid"
+                *ngIf="
+                    (detailsForm.get('surName')?.errors?.pattern || detailsForm.get('surName')?.errors?.minlength) &&
+                    detailsForm.get('surName')?.touched
+                "
+            >
+                INVALID SURNAME.
+            </p>
+        </mtn-input>
+    </div>
+    <div class="col-12 col-xs-12">
+        <p class="u-font-sm">Do you have South African ID?</p>
+    </div>
+    <div class="col-12 col-xs-12">
+        <mtn-radio-button-group ngDefaultControl class="row mb-5" formControlName="isSAID">
+            <mtn-radio-button
+                ngDefaultControl
+                class="link-options radio-btn col-12 col-xs-12 u-sp-top"
+                [value]="isIdNumberSelected"
+                (click)="changeOption(true)"
+                [isEnlarged]="true"
+                [checked]="isIdNumberSelected"
+            >
+                <label>Yes</label>
+                <mtn-input-number
+                    style="margin-left: -40px; margin-top: 20px"
+                    length="13"
+                    type="id"
+                    *ngIf="isIdNumberSelected"
+                    [form]="idNumber"
+                    [valid]="isValidIdNumber"
+                    [invalid]="!isValidIdNumber && idNumberValue"
+                    [isFieldSelected]="focusIdInputNumber"
+                    (emitChangedIdNumberValidation)="changedIdNumberValidation($event)"
+                >
+                    <mtn-input-number-label>South African ID number</mtn-input-number-label>
+                    <mtn-input-number-error-message *ngIf="isValidIdNumber"
+                        >ENTER A VALID SOUTH AFRICAN ID NUMBER</mtn-input-number-error-message
+                    >
+                </mtn-input-number>
+            </mtn-radio-button>
+
+            <mtn-radio-button
+                ngDefaultControl
+                class="link-options radio-btn col-12 col-xs-12 u-sp-top"
+                [value]="!isIdNumberSelected"
+                (click)="changeOption(false)"
+                [isEnlarged]="true"
+                [checked]="!isIdNumberSelected"
+            >
+                <label>No</label>
+                <mtn-input-number
+                    style="margin-left: -40px; margin-top: 20px"
+                    length="9"
+                    [isAlphanumeric]="true"
+                    [form]="idNumber"
+                    *ngIf="!isIdNumberSelected"
+                    [valid]="validPassportNumber"
+                    [invalid]="!validPassportNumber && idNumberValue"
+                    (inputChange)="inputChange($event)"
+                    [isFieldSelected]="focusIdInputNumber"
+                >
+                    <mtn-input-number-label>Passport number</mtn-input-number-label>
+                    <mtn-input-number-error-message>Incorrect passport Number</mtn-input-number-error-message>
+                </mtn-input-number>
+            </mtn-radio-button>
+        </mtn-radio-button-group>
+    </div>
+</div>
+<div class="row mtn-btn-cont">
+    <div class="col-2 col-sm-2 col-md-2 col-lg-1 u-no-gutters">
+        <mtn-icon mtnStepperPrevious name="back" tabindex="0" class="business-stepper_prev-step" (click)="onPrevStep()"> </mtn-icon>
+    </div>
+    <div class="col-10 col-sm-10 col-md-10 col-lg-11 u-no-gutters u-padding-lf-sm">
+        <button
+            mtnButton
+            tabindex="0"
+            [disabled]="
+                (!isValidIdNumber && isIdNumberSelected) ||
+                (!validPassportNumber && !isIdNumberSelected) ||
+                !detailsForm.get('firstName').valid ||
+                !detailsForm.get('surName').valid ||
+                !validSaIdNumber
+            "
+            #recepient_details
+            mtnStepperNext
+            type="secondary2"
+            (click)="onNext()"
+        >
+            Next
+        </button>
+    </div>
+</div>

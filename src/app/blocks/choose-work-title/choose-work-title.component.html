@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row center" (keydown.enter)="onKeyDownEvent($event)">
+        <div class="col-lg-6 col-md-10 col-sm-12">
+            <mtn-card-input>
+                <mtn-card-input-top style="margin-bottom: 10px">
+                    <h3 mtnCardInputTitle>
+                        <span class="header-align"><strong>What is your role?</strong></span>
+                    </h3>
+                    <span mtnCardInputSubTitleSmall>
+                        To complete the application, we <br />
+                        need to know what your position <br />in the business is.</span
+                    >
+                </mtn-card-input-top>
+
+                <mtn-card-input-body style="margin-bottom: 40px">
+                    <div mtnCardMainBody>
+                        <mtn-radio-button-group class="d-block" ngDefaultControl>
+                            <mtn-radio-button
+                                [isEnlarged]="true"
+                                ngDefaultControl
+                                [value]="'Business Owner'"
+                                [checked]="selectedWorkTitle === 'Business Owner'"
+                                (click)="onChange('Business Owner')"
+                            >
+                                <label class="radio_label mt-2" [class.font-weight-semi-bold]="selectedWorkTitle === 'Business Owner'">
+                                    Business Owner
+                                </label>
+                            </mtn-radio-button>
+
+                            <mtn-radio-button
+                                [isEnlarged]="true"
+                                ngDefaultControl
+                                [value]="'Employee'"
+                                [checked]="selectedWorkTitle === 'Employee'"
+                                (click)="onChange('Employee')"
+                            >
+                                <label class="radio_label mt-2" [class.font-weight-semi-bold]="selectedWorkTitle === 'Employee'">
+                                    Employee
+                                </label>
+                            </mtn-radio-button>
+                        </mtn-radio-button-group>
+                    </div>
+                </mtn-card-input-body>
+
+                <mtn-card-input-bottom>
+                    <button mtnButton (click)="onNext()" type="secondary2">Continue</button>
+                </mtn-card-input-bottom>
+            </mtn-card-input>
+        </div>
+    </div>
+</div>

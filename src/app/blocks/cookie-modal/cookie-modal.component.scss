@@ -1,0 +1,38 @@
+@import '../../styles/utilities/variables.scss';
+
+header {
+    // padding: 0 30px;
+    display: flex;
+    border-bottom: 1px solid $mtn-color-gray-100;
+    padding-bottom: 17px;
+    margin-bottom: 25px;
+    .header_cookie {
+        width: 515px;
+        color: $mtn-color-black;
+        font-family: $app-font-family; //Todo
+        font-size: $app-font-size-xlg;
+        font-weight: 800;
+        letter-spacing: -0.16px;
+        line-height: 40px;
+        margin: 0;
+    }
+    span {
+        cursor: pointer;
+    }
+    main.p {
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 415px) {
+    ::ng-deep .mtn-modal-body {
+        width: 360px !important;
+        padding: 15px;
+        height: 90vh;
+        overflow: auto;
+        .header_cookie {
+            width: 100% !important;
+            font-size: 22px !important;
+        }
+    }
+}

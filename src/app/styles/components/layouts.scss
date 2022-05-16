@@ -1,0 +1,86 @@
+.mtn-card-input_top {
+    margin: 0 !important;
+}
+
+.ebu-container {
+    padding-top: 80px;
+    margin-top: 45px;
+    padding-bottom: 130px;
+    @media screen and (max-width: 415px) {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    @media screen and (max-width: 768px) {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
+
+.logout-icon {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 34px;
+    cursor: pointer;
+}
+body {
+    padding-top: 0px !important;
+}
+
+.account-txt {
+    color: $mtn-color-dark;
+    font-family: $app-font-family;
+    font-size: $app-font-size-md;
+    font-weight: 500;
+    letter-spacing: -0.13px;
+    text-transform: uppercase;
+    display: block;
+    &-label {
+        color: $mtn-color-black;
+        font-family: $app-font-family;
+        font-size: $app-font-size-md;
+        letter-spacing: -0.18px;
+        margin: 0;
+        margin-top: 4px;
+        text-align: right;
+    }
+}
+
+.header-txt {
+    color: $mtn-color-black;
+    font-family: $app-font-family;
+    font-size: 22px;
+    letter-spacing: -0.6px;
+    line-height: 32px;
+}
+
+.mtn-round-text {
+    width: 33px;
+    height: 33px;
+    border-radius: 100%;
+    background-color: #232323;
+    font-family: $app-font-family;
+    color: white;
+}
+
+.arrow-icon {
+    transform: rotate(90deg);
+    cursor: pointer;
+}
+
+.diasable-click {
+    cursor: not-allowed;
+}
+
+button:focus {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+}
+button.mtn-back-icon:focus {
+    box-shadow: unset !important;
+}
+
+::ng-deep .mtn-radio-button_wrapper {
+    margin-bottom: 0;
+    display: inline-flex !important;
+    align-items: center;
+}

@@ -1,0 +1,88 @@
+.mtn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.mtn-pad-btm-sm {
+    padding-bottom: 8%;
+}
+.mtn-grid-wid {
+    width: 520px;
+}
+
+::ng-deep .mtn-radio-button_wrapper {
+    display: block;
+}
+
+::ng-deep .mtn-radio-button__divider {
+    width: 90%;
+}
+
+::ng-deep .input-account-selection_container {
+    width: 100%;
+}
+::ng-deep .input-account-selection_subtitle_container {
+    padding-left: 41px;
+}
+::ng-deep .overlay {
+    width: 100%;
+}
+
+::ng-deep .set-struct-control {
+    width: 100%;
+}
+
+::ng-deep .mtn-radio-button__text-acc-sel {
+    padding-left: 10px;
+}
+
+mtn-radio-button-group {
+    display: flex;
+    mtn-radio-button {
+        margin: 1em 1em 0 0;
+        ::ng-deep .mtn-radio-button_text {
+            color: #232323;
+            font-size: 18px;
+            letter-spacing: -0.2px;
+            line-height: 12px;
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .header-align {
+        width: 47% !important;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .header-align {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .mtn-card-input_top {
+        text-align: left;
+    }
+    ::ng-deep .mtn-card-input {
+        padding: 32px 20px !important;
+        text-align: left;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    ::ng-deep {
+        .mtn-card-input {
+            border: 0;
+            box-shadow: none;
+            text-align: left;
+        }
+    }
+}
+
+.container {
+    margin-top: 8%;
+}

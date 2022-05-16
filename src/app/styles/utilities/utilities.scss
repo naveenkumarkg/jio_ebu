@@ -1,0 +1,88 @@
+// utility classes
+.u-sp-top {
+    margin-top: 72px;
+}
+.u-sp-top-50 {
+    margin-top: 50px;
+}
+.u-sp-bottom-40 {
+    margin-bottom: 16px;
+}
+
+.u-sp-top-22 {
+    margin-top: 22px;
+}
+.u-text-bold {
+    font-weight: bold;
+}
+
+.u-sp-left-18 {
+    margin-left: 10px !important;
+}
+
+.u-sp-bottom-45 {
+    margin-bottom: 45px;
+}
+
+.u-align-rht {
+    justify-content: flex-end;
+}
+
+.u-v-align-center {
+    align-items: center;
+}
+
+.u-gutters {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hr-line {
+    height: 2px;
+    width: 100%;
+    background-color: $mtn-color-gray-100;
+}
+.u-center-hr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hr-line-sm {
+    height: 1px;
+    width: 100%;
+    background-color: $mtn-color-gray-100;
+}
+.no-gutters {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.u-gutters-10 {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.u-display-flex {
+    display: flex;
+}
+
+.u-stick-top {
+    position: fixed;
+    z-index: 900;
+    width: 75%;
+    background-color: white;
+    margin-top: 0;
+    padding-top: 93px;
+}
+
+.u-sp-to-190 {
+    padding: 0;
+    margin-top: 190px;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}

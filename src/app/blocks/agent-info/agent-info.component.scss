@@ -1,0 +1,62 @@
+::ng-deep {
+    @media screen and (max-width: 414px) {
+        .mtn-card-input {
+            border: 0;
+            box-shadow: none;
+            padding-left: 18px;
+        }
+    }
+    mtn-radio-button.agent-options {
+        .mtn-radio-button_wrapper {
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        .mtn-radio-button_control {
+            align-self: flex-start;
+        }
+
+        .mtn-radio-button_text {
+            flex-direction: column;
+            align-items: baseline;
+            margin-top: 2px;
+            width: calc(100% - 40px);
+            text-align: left;
+        }
+
+        .mtn-input-number_container {
+            display: block;
+        }
+
+        .mtn-input-number_field_container {
+            width: 90%;
+            min-width: -webkit-fill-available;
+        }
+
+        .radio_label {
+            cursor: pointer;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .ebu-container {
+        padding-top: 0;
+    }
+
+    ::ng-deep {
+        .mtn-radio.largerRadio .mtn-radio-button__input:checked + .mtn-radio-button_control:after {
+            left: 2px;
+        }
+
+        .container-cookie {
+            top: 80px !important;
+        }
+
+        .mtn-card-input {
+            border: 0;
+            box-shadow: none;
+            text-align: left;
+        }
+    }
+}

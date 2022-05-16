@@ -1,0 +1,20 @@
+<div class="row" tabindex="0">
+    <div class="col-sm-12" class="content-wrapper u-sp-bottom-45">
+        <mtn-stepper [(selectedIndex)]="stepperCount">
+            <mtn-step-icon>
+                <img src="/business/ebu-prepaid/assets/images/personal.svg" />
+            </mtn-step-icon>
+            <mtn-step title="PERSONAL DETAILS">
+                <mtn-personal-details></mtn-personal-details>
+            </mtn-step>
+
+            <mtn-step-icon>
+                <img src="/business/ebu-prepaid/assets/images/business.svg" />
+            </mtn-step-icon>
+            <mtn-step title="BUSINESS DETAILS">
+                <mtn-business-details *ngIf="workTitle !== 'employee'"></mtn-business-details>
+                <mtn-employee-details *ngIf="workTitle === 'employee'"></mtn-employee-details>
+            </mtn-step>
+        </mtn-stepper>
+    </div>
+</div>

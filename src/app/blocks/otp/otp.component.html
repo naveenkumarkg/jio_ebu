@@ -1,0 +1,45 @@
+<div class="mtn-grid_container">
+    <mtn-row>
+        <mtn-col xs="4" sm="4" md="4" lg="6" offsetMd="2">
+            <div class="otp-form-container ebu-container">
+                <form [formGroup]="validateOtpForm" tabindex="0" (ngSubmit)="validateOtp()" (keydown.enter)="onKeyDownEvent($event)">
+                    <mtn-card-input>
+                        <mtn-card-input-top>
+                            <h3 mtnCardInputTitle *ngIf="!isNewOtp">
+                                An <strong>OTP</strong> has<span class="label_title">been sent.</span>
+                            </h3>
+                            <h3 mtnCardInputTitle *ngIf="isNewOtp">A new <strong>OTP</strong> has<span class="spaces">been sent.</span></h3>
+                            <span mtnCardInputSubTitleSmall>
+                                Type in the 4-digit OTP that was sent to <br />
+                                <strong class="maskedValue">{{ maskedValue }}</strong> {{ cellNumberMasked }}.
+                            </span>
+                        </mtn-card-input-top>
+                        <br />
+                        <mtn-card-input-body class="otp-control-layout">
+                            <mtn-input-otp-ou
+                                length="4"
+                                [form]="validateOtpForm"
+                                [isValid]="isValid || (!isError && !validateOtpForm.invalid)"
+                                [isError]="isError"
+                                (input)="checkInput($event)"
+                            >
+                                <mtn-input-otp-ou-label>Enter Otp</mtn-input-otp-ou-label>
+                                <mtn-input-otp-ou-error>{{ errorMessage?.toUpperCase() }}</mtn-input-otp-ou-error>
+                            </mtn-input-otp-ou>
+                            <a mtnCardInputOtpResend href="javascript:void(0)" (click)="resendsendNewOtp()">
+                                SEND NEW OTP
+                                <img class="otp-resend-icon" src="/business/ebu-prepaid/assets/images/arrow-right.svg" />
+                            </a>
+                        </mtn-card-input-body>
+                        <mtn-card-input-bottom>
+                            <button mtnButton type="secondary2" [disabled]="validateOtpForm.invalid">Continue</button>
+                            <p mtnCardInputFooterText>
+                                Having trouble logging in? <br />Call <strong class="number-bold">083 123 1800</strong> for assistance.
+                            </p>
+                        </mtn-card-input-bottom>
+                    </mtn-card-input>
+                </form>
+            </div>
+        </mtn-col>
+    </mtn-row>
+</div>

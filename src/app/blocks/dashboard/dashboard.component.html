@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-sm-2 toggle-side-nav">
+        <mtn-collapse-side-panel
+            tabindex="0"
+            style="width: 16.33%"
+            panelCollabse="true"
+            logo="/business/ebu-prepaid/assets/images/MTN_logo_newBrand.svg"
+        ></mtn-collapse-side-panel>
+    </div>
+    <div class="col-sm-10">
+        <div class="container m-0">
+            <div class="row u-stick-top u-sp-bottom-45">
+                <div class="col-10">
+                    <h4 class="header-txt"><span class="u-text-bold">Made for Skhokho</span></h4>
+                </div>
+                <div class="col-2">
+                    <p class="m-0 text-right">
+                        <label class="header-close-btn show" (click)="onClose()" for="closeIcon">&#10006;</label>
+                    </p>
+                </div>
+                <div class="col-12 hide-sm u-sp-top-22">
+                    <div class="hr-line-sm"></div>
+                </div>
+            </div>
+            <div class="row" tabindex="0">
+                <div class="col-12" class="u-sp-to-190">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

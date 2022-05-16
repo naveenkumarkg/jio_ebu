@@ -1,0 +1,76 @@
+.otp-form-container {
+    width: 588px;
+}
+
+.otp-control-layout {
+    margin-top: 50px;
+}
+
+// .otp-card-style {
+//     padding-left: 150px;
+// }
+
+.otp-resend-icon {
+    padding-left: 6px;
+    margin-bottom: 4px;
+}
+
+.mtn-grid_container,
+.mtn-background-curve_content_container,
+.mtn-nav_main_container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0px;
+}
+
+::ng-deep .mtn-card-input_resend {
+    white-space: nowrap;
+}
+
+::ng-deep .mtn-card-input_resend {
+    margin-top: 10px;
+}
+
+.maskedValue {
+    vertical-align: super;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+}
+@media screen and (max-width: 415px) {
+    ::ng-deep {
+        .mtn-card-input {
+            text-align: start;
+            padding-left: 0;
+            border: 0;
+            box-shadow: none;
+            padding-top: 5px;
+        }
+
+        .mtn-card-input_top {
+            text-align: start;
+        }
+
+        .mtn-card-input_subtitle-small {
+            font-size: 14px;
+            line-height: 1px;
+        }
+
+        .otp-control-layout {
+            margin-top: 10px !important;
+        }
+
+        .mtn-input-otp-ou_state_icon {
+            display: none;
+        }
+        .label_title {
+            margin-left: 10px;
+        }
+        .spaces {
+            margin-left: 8px;
+        }
+    }
+}

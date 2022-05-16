@@ -1,0 +1,106 @@
+image: docker:stable
+
+cache:
+    key: ${CI_COMMIT_REF_NAME}
+
+variables:
+    registry_name: portals-registry.mtn.co.za/enterprise-business-unit/ebu-prepaid
+    version: ${CI_COMMIT_TAG}
+    image_name: ebu-prepaid
+    network_name: ebu-prepaid-network
+
+include:
+  - local: 'ci/.gitlab-ci-dev.yml'
+  - local: 'ci/.gitlab-ci-preprod.yml'
+  - local: 'ci/.gitlab-ci-prod.yml'
+  - local: 'ci/.gitlab-ci-dr.yml'
+
+stages:
+    - analyse
+    - dependencies_scan
+    - test
+    - build_mr
+    - deploy_mr
+    - build_testing
+    - testing_deploy
+    - build_dev
+    - dev_deploy
+    - image_security_scan
+    - build_preprod
+    - preprod_deploy
+    - build_prod
+    - prod_deploy
+    - build_dr
+    - dr_deploy
+
+before_script:
+    - echo "export http_proxy=http://${PROXY_NAME}:${PROXY_PASS}@proxy-fld.mtn.co.za:8080/" >> .dockerenv
+    - echo "export https_proxy=http://${PROXY_NAME}:${PROXY_PASS}@proxy-fld.mtn.co.za:8080/" >> .dockerenv
+    - echo "export no_proxy=127.0.0.1,localhost.*.mtn.co.za" >> .dockerenv
+    - source .dockerenv
+    - export CHROME_BIN=/usr/bin/chromium-browser
+    - docker login -u ${USERNAME} -p ${PASSWORD} portals-registry.mtn.co.za
+    - echo "@mtn-components:registry=https://gitlab.com/api/v4/packages/npm/">.npmrc
+    - echo "//gitlab.com/api/v4/packages/npm/:_authToken=${NPM_PAT}">>.npmrc
+
+########## ebu-prepaid SonarQube linting ##########
+linting:
+  stage: analyse
+  except:
+    - master
+  script:
+    - npm config set proxy http://${PROXY_NAME}:${PROXY_PASS}@proxy-fld.mtn.co.za:8080
+    - npm ci --no-progress --no-optional --no-audit --ignore-scripts --prefer-offline
+    - npm run lint
+    - npm run prettier:check
+  interruptible: true
+  tags:
+    - fla_preprod_s03
+
+########## ebu-prepaid Dependencies scan ##########
+dependencies_scan:
+  stage: test
+  except:
+    - master
+  allow_failure: true
+  script:
+    - npm config set proxy http://${PROXY_NAME}:${PROXY_PASS}@proxy-fld.mtn.co.za:8080
+    - npm ci --no-progress --no-optional --no-audit --ignore-scripts --prefer-offline && npm audit
+  interruptible: true
+  tags:
+    - fla_preprod_s03
+
+########### ebu-prepaid unit tests ##########
+unit_tests:
+    stage: test
+    except:
+        - master
+    script:
+        - npm ci --no-progress --no-optional --no-audit --ignore-scripts --prefer-offline
+        - npm test
+    interruptible: true
+    tags:
+        - fla_preprod_s03
+############# ebu-prepaid Sonar Analysis stage ###################
+sonarqube_analysis:
+    stage: analyse
+    only:
+      refs:
+        - develop
+    script:
+    - >
+     sonar-scanner
+     -Dsonar.projectKey=ebu-prepaid-project
+     -Dsonar.host.url=http://flaolprvd05.mtn.co.za:9000
+     -Dsonar.login=b87a169fbefbf9d323bc6156d591130c2d81732d
+     -Dsonar.typescript.lcov.reportPaths=coverage/lcov/lcov.info
+     -Dsonar.sourceEncoding=UTF-8
+     -Dsonar.sources=.
+     -Dsonar.exclusions=**/node_modules/**,**/*.unit.ts,all-tests-report.html,ebu-prepaid-tests-report.html
+     -Dsonar.tests=.
+     -Dsonar.test.inclusions=**/*.unit.ts
+    interruptible: true
+    tags:
+        - fla_dev_d01
+
+######################## End #########################################

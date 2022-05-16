@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icon Area</title>
+    <defs>
+        <path d="M31,62 C48.1208272,62 62,48.1208272 62,31 C62,26.5288854 62,16.1955521 62,0 L0,0 C0,13.4498088 0,23.7831422 0,31 C0,48.1208272 13.8791728,62 31,62 Z" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_OPT-IN_64" transform="translate(0.000000, 0.000000)">
+            <circle id="bg" stroke="#232323" stroke-width="4" cx="32" cy="32" r="30"></circle>
+            <circle id="bg" stroke="#232323" stroke-width="2" cx="32" cy="32" r="24"></circle>
+            <g id="mask" transform="translate(1.000000, 0.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="bg"></g>
+                <path d="M36,24 C39.3137085,24 42.3137085,25.3431458 44.4852814,27.5147186 C46.6568542,29.6862915 48,32.6862915 48,36 L48,36 L48,84 L14,84 L14,36 C14,32.6862915 15.3431458,29.6862915 17.5147186,27.5147186 C19.6862915,25.3431458 22.6862915,24 26,24 L26,24 Z" id="Rectangle" stroke="#232323" stroke-width="4" fill="#FFFFFF" mask="url(#mask-2)"></path>
+                <circle id="Oval" stroke="#232323" stroke-width="4" fill="#FFFFFF" mask="url(#mask-2)" cx="31" cy="12" r="10"></circle>
+                <g id="ic_FORM_COVERED" mask="url(#mask-2)">
+                    <g transform="translate(11.000000, 33.000000)">
+                        <g id="form" stroke-width="1" fill="none" stroke-linecap="square">
+                            <g id="Group" stroke="#232323" stroke-width="2">
+                                <path d="M2,0 L30.5857864,0 C30.8510029,-9.9095773e-16 31.1053568,0.10535684 31.2928932,0.292893219 L39.7071068,8.70710678 C39.8946432,8.89464316 40,9.14899707 40,9.41421356 L40,54 C40,55.1045695 39.1045695,56 38,56 L2,56 C0.8954305,56 1.3527075e-16,55.1045695 0,54 L0,2 C-1.3527075e-16,0.8954305 0.8954305,2.02906125e-16 2,0 Z" id="Rectangle" fill="#FFFFFF"></path>
+                                <path d="M31,2 L31,8 C31,9.1045695 31.8954305,10 33,10 L39,10 L39,10" id="Line"></path>
+                            </g>
+                        </g>
+                        <circle id="Oval" fill="#232323" cx="8" cy="12" r="4"></circle>
+                        <rect id="Rectangle" fill="#232323" x="14" y="13" width="16" height="1" rx="0.5"></rect>
+                        <rect id="Rectangle" fill="#232323" x="14" y="10" width="22" height="1" rx="0.5"></rect>
+                        <circle id="Oval" fill="#232323" cx="8" cy="24" r="4"></circle>
+                        <rect id="Rectangle" fill="#232323" x="14" y="25" width="16" height="1" rx="0.5"></rect>
+                        <rect id="Rectangle" fill="#232323" x="14" y="22" width="22" height="1" rx="0.5"></rect>
+                        <circle id="Oval" fill="#232323" cx="8" cy="36" r="4"></circle>
+                        <rect id="Rectangle" fill="#232323" x="14" y="37" width="16" height="1" rx="0.5"></rect>
+                        <rect id="Rectangle" fill="#232323" x="14" y="34" width="22" height="1" rx="0.5"></rect>
+                    </g>
+                </g>
+            </g>
+            <circle id="Oval" stroke="#232323" stroke-width="4" fill="#FFFFFF" cx="12" cy="35" r="5"></circle>
+        </g>
+    </g>
+</svg>

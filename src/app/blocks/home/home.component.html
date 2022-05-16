@@ -1,0 +1,7 @@
+<vivid-nav name="navbar" [data]="header"></vivid-nav>
+<mtn-cookie-banner *ngIf="showBanner" tabindex="0" (closeBanner)="closeBanner($event)"></mtn-cookie-banner>
+<div class="mainsection">
+    <router-outlet></router-outlet>
+</div>
+<mtn-custom-footer name="footer"></mtn-custom-footer>
+<mtn-loader src="/business/shop/assets/images/preloader.gif"></mtn-loader>

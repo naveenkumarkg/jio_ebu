@@ -1,0 +1,59 @@
+<!-- Terms and conditions-->
+<mtn-modal id="terms-and-conditions" tabindex="0" (keydown.enter)="onKeyDownEvent('terms-and-conditions')">
+    <mtn-terms-conditions>
+        <mtn-terms-conditions-top>
+            <h3 mtnTermsConditionsHeading>
+                <span class="terms-conditions-header">Terms & Conditions</span>
+            </h3>
+            <mtn-link-icon (click)="closeModal('terms-and-conditions')" type="primary">
+                <img src="/business/ebu-prepaid/assets/images/Close_icon.svg" alt="close icon" />
+            </mtn-link-icon>
+        </mtn-terms-conditions-top>
+        <mtn-terms-conditions-sidebar>
+            <li *ngFor="let item of termTypes" mtnTermsConditionsSidebarItem (click)="selectTermsAndConditions(item.type)">
+                <span [class.u-bold-txt]="selectedTermsType === item.type">{{ item.title }}</span>
+            </li>
+        </mtn-terms-conditions-sidebar>
+        <mtn-terms-conditions-main style="-webkit-mask-image: none">
+            <!-- <embed #pdf [src]="" /> -->
+            <pdf-viewer
+                class="is-mobile"
+                [src]="originalPdfUrl"
+                [render-text]="true"
+                [original-size]="false"
+                style="width: 100%; height: 50vh"
+            ></pdf-viewer>
+            <p class="pdf-fall-out pdf-fall-out-text">
+                This plug-in is not supported by your operating system, please click on the save PDF button below to download our terms and
+                conditions.
+            </p>
+        </mtn-terms-conditions-main>
+        <mtn-terms-conditions-bottom>
+            <button
+                tabindex="0"
+                mtnButton
+                style="width: 137px"
+                (click)="downloadOrPrintAsPdf()"
+                type="outline"
+                class="TermsConditions-button"
+            >
+                print
+            </button>
+            <button
+                tabindex="0"
+                mtnButton
+                style="width: 137px"
+                (click)="downloadOrPrintAsPdf()"
+                type="outline"
+                class="TermsConditions-button"
+            >
+                save pdf
+            </button>
+
+            <button tabindex="0" *ngIf="isOrderSubmited" mtnButton class="mtn-t-and-c-loading">
+                <img style="width: 30px; height: 30px" src="/business/ebu-prepaid/assets/images/preloader.gif" alt="close icon" />
+            </button>
+        </mtn-terms-conditions-bottom>
+        <img class="i-agree-to-be-credit" src="/business/ebu-prepaid/assets/images/i_agree.png" />
+    </mtn-terms-conditions>
+</mtn-modal>

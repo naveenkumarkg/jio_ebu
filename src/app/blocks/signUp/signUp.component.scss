@@ -1,0 +1,51 @@
+::ng-deep .signUpForm .mtn-card-input_subtitle {
+    margin-bottom: 20px;
+    max-width: 76%;
+    margin-bottom: 50px;
+}
+
+@media screen and (max-width: 768px) {
+    ::ng-deep .mtn-card-input {
+        text-align: start !important;
+        border: 0;
+        box-shadow: none;
+        padding-left: 1rem;
+        padding-top: 10px;
+    }
+
+    .header_title span {
+        display: inline;
+        margin-right: 0.6rem;
+    }
+}
+
+@media screen and (max-width: 415px) {
+    ::ng-deep .mtn-card-input_top,
+    .mtn-card-input_title {
+        max-width: 300px;
+        width: 100%;
+    }
+    ::ng-deep .mtn-card-input {
+        padding-top: 0;
+        .mtn-input-number_container {
+            display: block;
+        }
+
+        .mtn-input-number_field_container {
+            min-width: -webkit-fill-available;
+        }
+    }
+
+    .header_title span {
+        margin-right: 0.6rem;
+    }
+
+    .header_sub_title {
+        font-size: 1.13rem;
+    }
+
+    ::ng-deep .mtn-card-input_footer-text {
+        max-width: 450px;
+        width: 100%;
+    }
+}

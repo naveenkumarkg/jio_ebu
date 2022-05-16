@@ -1,0 +1,35 @@
+version: "3.4"
+
+services:
+  ebu-prepaid:
+    image: ${registry_name}/preprod
+    ports:
+      - 8114:8114
+    volumes:
+      - certs-data:/home/docker_apps/dist/certs
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == flaolprvs01
+      resources:
+        limits:
+          memory: 4g
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.ebu-prepaid-https.entrypoints=websecure
+        - traefik.http.routers.ebu-prepaid-https.rule=Host(`portals-preprod.mtn.co.za`) && (PathPrefix(`/business/ebu-prepaid`))
+        - traefik.http.routers.ebu-prepaid-https.tls.certresolver=le
+        - traefik.http.services.ebu-prepaid.loadbalancer.server.scheme=https
+        - traefik.http.services.ebu-prepaid.loadbalancer.passhostheader=true
+        - traefik.http.services.ebu-prepaid.loadbalancer.server.port=8114
+        - traefik.docker.network=traefik
+    networks:
+      - traefik
+
+volumes:
+  certs-data:
+
+networks:
+  traefik:
+    external:
+      name: traefik

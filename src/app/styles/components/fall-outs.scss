@@ -1,0 +1,54 @@
+.mtn-fall-out {
+    &-header {
+        // width: 456px;
+        color: #232323;
+        font-family: $app-font-family;
+        font-size: 32px;
+        font-weight: $app-font-weight-300;
+        letter-spacing: -0.2px;
+        line-height: 2;
+        // text-align: center;
+        // margin: auto;
+    }
+    &-text {
+        // width: 456px;
+        color: #414141;
+        font-family: $app-font-family;
+        font-size: 18px;
+        font-weight: $app-font-weight-300;
+        letter-spacing: -0.4px;
+        // line-height: 24px;
+        // text-align: center;
+        // margin: auto;
+    }
+    &-btn {
+        // text-align: center;
+        &-lg {
+            margin-bottom: 20px;
+            width: 100% !important;
+        }
+        &-bg-white {
+            background: white !important;
+            color: black !important;
+            border: 1px solid black !important;
+        }
+    }
+
+    &-icon {
+        // text-align: center;
+        display: block;
+        margin-bottom: 50px;
+        width: 100%;
+    }
+
+    &-close {
+        position: relative;
+        top: -50px;
+        float: right;
+        cursor: pointer;
+    }
+}
+
+.mtn-modal-background {
+    z-index: 9999 !important;
+}

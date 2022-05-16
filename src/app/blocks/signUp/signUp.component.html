@@ -1,0 +1,40 @@
+<div class="container ebu-container">
+    <div class="row center">
+        <div class="col-md-6 col-sm-10">
+            <div [formGroup]="inputCardForm" class="signUpForm">
+                <mtn-card-input>
+                    <mtn-card-input-top>
+                        <h3 class="header_title" mtnCardInputTitle><span>Sign up</span>for<strong> Made for Skhokho</strong>.</h3>
+                        <h4 class="header_sub_title text-wrap" mtnCardInputSubTitle>
+                            Use your prepaid cellphone number <span>to sign up.</span>
+                        </h4>
+                    </mtn-card-input-top>
+                    <mtn-card-input-body>
+                        <mtn-input-number
+                            length="10"
+                            type="cellphone"
+                            [form]="inputCardForm.get('cellphone')"
+                            [valid]="inputCardForm.get('cellphone').valid"
+                            [invalid]="isError"
+                            (emitChangedCellphoneValidation)="ValidateCellphone($event)"
+                        >
+                            <mtn-input-number-label>Cellphone number</mtn-input-number-label>
+                            <mtn-input-number-error-message *ngIf="!isError"
+                                >USE A VALID PREPAID CELLPHONE NUMBER.</mtn-input-number-error-message
+                            >
+                            <mtn-input-number-error-message class="mtn-input_msg error" *ngIf="isError">
+                                {{ errorMessage }}
+                            </mtn-input-number-error-message>
+                        </mtn-input-number>
+                    </mtn-card-input-body>
+                    <mtn-card-input-bottom>
+                        <button mtnButton type="secondary2" [disabled]="enable" (click)="sendToOtp()">Continue</button>
+                        <p mtnCardInputFooterText>
+                            you’ll receive an SMS with a One-Time Password (OTP) to ensure your information stays safe.
+                        </p>
+                    </mtn-card-input-bottom>
+                </mtn-card-input>
+            </div>
+        </div>
+    </div>
+</div>
